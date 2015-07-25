@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MediReQ</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Profiles">Profiles</string>
+    <string name="AddProfile">Add Profile</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="title_activity_contact_information">ContactInformationActivity</string>
+    <string name="name">Name:</string>
+    <string name="contact">Contact Information</string>
+    <string name="address">Address:</string>
+    <string name="email">Email:</string>
+    <string name="phone">Phone:</string>
+    <string name="emergeny">Emergency Contact:</string>
+    <string name="SaveChanges">Save Changes</string>
+
+    <string-array name="categories">
+        <item>Contact Information</item>
+        <item>Medication</item>
+    </string-array>
+</resources>
