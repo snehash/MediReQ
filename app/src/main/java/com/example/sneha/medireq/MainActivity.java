@@ -57,14 +57,20 @@ public class MainActivity extends Activity {
     }
 
     private void init(){
-        mAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1, mBoundService.names);
+        mAdapter = new ArrayAdapter<String>(context,R.layout.mytextview, mBoundService.names);
         mListView = (ListView) findViewById(R.id.profiles);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(context, NavigationDrawer.class);
-                intent.putExtra(NavigationDrawer.PROFILE, position);
+                String filename = "";
+                for (Profile profile: mBoundService.profiles.values()){
+                    if(profile.name.equals(mBoundService.names.get(position))){
+                        filename = profile.filename;
+                    }
+                }
+                intent.putExtra(NavigationDrawer.PROFILE,filename);
                 startActivity(intent);
 
             }
@@ -79,7 +85,14 @@ public class MainActivity extends Activity {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Todo: remove from files
-                                mBoundService.remove(position);
+                                String filename = "";
+                                for (Profile profile: mBoundService.profiles.values()){
+                                    if(profile.name.equals(mBoundService.names.get(i))){
+                                        filename = profile.filename;
+                                    }
+                                }
+                                mBoundService.remove(filename, i);
+
                                 //also delete file here
                                 mAdapter.notifyDataSetChanged();
 
@@ -116,6 +129,7 @@ public class MainActivity extends Activity {
                         if(!mBoundService.names.contains(new_Name)) {
                             Profile profile = new Profile(new_Name);
                             mBoundService.names.add(new_Name);
+                            mBoundService.profiles.put(profile.filename, profile);
                             mAdapter.notifyDataSetChanged();
                         }
                     }

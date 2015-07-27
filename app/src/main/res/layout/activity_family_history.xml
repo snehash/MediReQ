@@ -45,15 +45,18 @@
                 <RadioButton android:id="@+id/living_mom_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:onClick="onMomClicked"/>
                 <RadioButton android:id="@+id/living_mom_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/no"/>
+                    android:text="@string/no"
+                    android:onClick="onMomClicked"/>
                 <RadioButton android:id="@+id/living_mom_unknown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/unknown"/>
+                    android:text="@string/unknown"
+                    android:onClick="onMomClicked"/>
 
             </RadioGroup>
         </LinearLayout>
@@ -120,15 +123,18 @@
                 <RadioButton android:id="@+id/living_dad_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:onClick="onDadClicked"/>
                 <RadioButton android:id="@+id/living_dad_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/no"/>
+                    android:text="@string/no"
+                    android:onClick="onDadClicked"/>
                 <RadioButton android:id="@+id/living_dad_unknown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/unknown"/>
+                    android:text="@string/unknown"
+                    android:onClick="onDadClicked"/>
 
             </RadioGroup>
         </LinearLayout>
@@ -401,7 +407,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/edit_past_details"/>
+                android:id="@+id/edit_fam_details"/>
 
         </LinearLayout>
 
@@ -410,7 +416,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/bttn_save_family_history"
             android:text="@string/SaveChanges"
-            android:background="@color/darkpurple"
+            android:background="@color/darkred"
             android:layout_marginTop="15dp"/>
 
     </LinearLayout>

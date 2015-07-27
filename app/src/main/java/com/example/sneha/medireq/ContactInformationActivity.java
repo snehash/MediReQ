@@ -64,8 +64,12 @@ public class ContactInformationActivity extends Activity {
 
         Intent intent = getIntent();
 
-        int profile_no = intent.getIntExtra(NavigationDrawer.PROFILE, -1);
-        profile = mBoundService.profiles.get(profile_no);
+        final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
+        System.out.println("Filename is " + filename);
+        profile = mBoundService.profiles.get(filename);
+        System.out.println(mBoundService.profiles);
+        System.out.println(profile);
+
         mName = (EditText) findViewById(R.id.edit_name);
         mAddress = (EditText) findViewById(R.id.edit_address);
         mEmail = (EditText) findViewById(R.id.edit_email);
@@ -94,9 +98,13 @@ public class ContactInformationActivity extends Activity {
         mPhone.setText(profile.phone);
         mEmer.setText(profile.emergencyContact);
         mEmerNum.setText(profile.emergencyNumber);
-        mAge.setText(profile.age);
+        if(profile.age >= 0) {
+            mAge.setText(((Integer)profile.age).toString());
+        }
         mBirthday.setText(profile.birthday);
-        mWeight.setText(profile.weight);
+        if(profile.weight >= 0) {
+            mWeight.setText(((Integer)profile.weight).toString());
+        }
         mHeight.setText(profile.height);
         physicanName.setText(profile.docname);
         physicanNo.setText(profile.docno);
@@ -109,17 +117,22 @@ public class ContactInformationActivity extends Activity {
                 female.setChecked(true);
                 male.setChecked(false);
                 other.setChecked(false);
+                currentGender = "female";
                 break;
             case "male":
                 female.setChecked(false);
                 male.setChecked(true);
                 other.setChecked(true);
+                currentGender = "male";
                 break;
             case "other":
                 female.setChecked(false);
                 male.setChecked(false);
                 other.setChecked(true);
+                currentGender = "other";
                 break;
+            default:
+                currentGender = "";
         }
 
 
@@ -128,14 +141,16 @@ public class ContactInformationActivity extends Activity {
             public void onClick(View v) {
 
                 profile.name = mName.getText().toString();
-                profile.age = Integer.parseInt(mAge.getText().toString());
+                if(!mAge.getText().equals(""))
+                    profile.age = Integer.parseInt(mAge.getText().toString());
                 profile.address = mAddress.getText().toString();
                 profile.email = mEmail.getText().toString();
                 profile.phone = mPhone.getText().toString();
                 profile.emergencyNumber = mEmerNum.getText().toString();
                 profile.emergencyContact = mEmer.getText().toString();
                 profile.birthday = mBirthday.getText().toString();
-                profile.weight = Integer.parseInt(mWeight.getText().toString());
+                if(!mAge.getText().equals(""))
+                    profile.weight = Integer.parseInt(mWeight.getText().toString());
                 profile.height = mHeight.getText().toString();
                 profile.docname = physicanName.getText().toString();
                 profile.docno = physicanNo.getText().toString();
@@ -144,7 +159,7 @@ public class ContactInformationActivity extends Activity {
                 profile.vitamins = vitamins.getText().toString();
                 profile.gender = currentGender;
 
-                mBoundService.saveProfile(mBoundService.profiles.indexOf(profile));
+                mBoundService.saveProfile(filename, profile);
 
 
 
@@ -228,7 +243,6 @@ public class ContactInformationActivity extends Activity {
         if (mIsBound) {
             doUnbindService();
         }
-        mBoundService.stopSelf();
     }
 
     public void onGenderButtonClicked(View view){

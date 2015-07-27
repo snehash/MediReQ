@@ -6,11 +6,12 @@ import android.os.Binder;
 import android.os.IBinder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.jar.Attributes;
 
 public class BackgroundService extends Service {
     public static boolean STARTED = false;
-    public ArrayList<Profile> profiles;
+    public HashMap<String, Profile> profiles; //mapping of filename to profiles;
     public ArrayList<String> names; //need this for arrayAdapter ie UI
 
     public BackgroundService() {
@@ -30,8 +31,9 @@ public class BackgroundService extends Service {
 
     @Override
     public void onCreate(){
-        profiles = new ArrayList<Profile>();
+        profiles = new HashMap<String, Profile>();
         names = new ArrayList<String>();
+        System.out.println("Running onCreate for Service");
 
         //ToDo: read files and populate profile and name here
     }
@@ -48,16 +50,16 @@ public class BackgroundService extends Service {
         //Todo: Save name and profile data to file. Don't have to do this if you're saving everytime you make a change
     }
 
-    public void remove(int position){
+    public void remove(String filename, int position){
         names.remove(position);
         //ToDo:
         //change names file
         //delete/clear profile file
-        profiles.remove(position);
+        profiles.remove(filename);
     }
 
-    public void saveProfile(int position){
-        Profile profile = profiles.get(position);
+    public void saveProfile(String filename, Profile profile){
+        profiles.put(filename, profile);
         //TODO: save profile data;
     }
 

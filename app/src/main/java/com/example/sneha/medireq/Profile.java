@@ -26,7 +26,7 @@ public class Profile{
     public int age, weight, momAge, dadAge;
     public boolean hospitalized, heptest, hepB, hepA, std, heartDisease,highcholest,highbp,
             lowbp, hearburn, anemia,swollenankles, shortbreath, asthma, lungprobs,sinus,
-            seasonalAllergies, otherAllergies, tonsillitis, earprob, eye, seizure, stroke,
+            seasonalAllergies, otherAllergies, tonsillitis, earprob, eye, seizure, stroke,headache,
             neuro, depression, psych, diabetes, kidney, liver, arthritis, cancer, ulcer, thyroid,
             penicillin, latex, tobacco, alcohol, coffee, exercise, fam_anemia, fam_cancer,
             fam_diabetes, fam_glaucoma, fam_hd, fam_hbp, fam_hiv, fam_depression, fam_stroke;
@@ -55,6 +55,7 @@ public class Profile{
         sibilingIllness = "";
         otherFamilyHistory = "";
         birthday = "";
+        headache = false;
         lastUpdate = new Time(Time.getCurrentTimezone());
         lastUpdate.setToNow();
         lastVisit = "";
@@ -114,5 +115,8 @@ public class Profile{
         fam_stroke = false;
 
     }
+
+
+    //Todo: Might need to override equals
 
 }

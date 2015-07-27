@@ -51,13 +51,13 @@ public class NavigationDrawer extends ActionBarActivity {
     private void init(){
 
         Intent intent = getIntent();
-        int profile_no = intent.getIntExtra(PROFILE, -1);
-        profile = mBoundService.profiles.get(profile_no);
+        final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
+        profile = mBoundService.profiles.get(filename);
 
         mListView = (ListView) findViewById(R.id.lv_categories);
         context = this;
         categories = getResources().getStringArray(R.array.categories);
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,categories);
+        mAdapter = new ArrayAdapter<String>(this, R.layout.mytextview,categories);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,32 +66,32 @@ public class NavigationDrawer extends ActionBarActivity {
                 switch(selection) {
                     case "Personal":
                         Intent intent_personal = new Intent(context, ContactInformationActivity.class);
-                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        intent_personal.putExtra(PROFILE, filename);
                         startActivity(intent_personal);
                         break;
                     case "Past Conditions":
                         Intent intent_pastcond = new Intent(context, PastConditionsActivity.class);
-                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        intent_pastcond.putExtra(PROFILE, filename);
                         startActivity(intent_pastcond);
                         break;
                     case "Surgical History":
                         Intent intent_surg = new Intent(context, SurgicalHistory.class);
-                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        intent_surg.putExtra(PROFILE, filename);
                         startActivity(intent_surg);
                         break;
                     case "Medical Allergies":
                         Intent intent_allergies = new Intent(context, MedicalAllergies.class);
-                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        intent_allergies.putExtra(PROFILE, filename);
                         startActivity(intent_allergies);
                         break;
                     case "Behavior":
                         Intent intent_behav = new Intent(context, BehaviorActivity.class);
-                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        intent_behav.putExtra(PROFILE, filename);
                         startActivity(intent_behav);
                         break;
                     case "Family History":
                         Intent intent_fam = new Intent(context, FamilyHistoryActivity.class);
-                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        intent_fam.putExtra(PROFILE, filename);
                         startActivity(intent_fam);
                         break;
 
@@ -104,20 +104,6 @@ public class NavigationDrawer extends ActionBarActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
-            if(resultCode == RESULT_OK){
-                int profile_no = data.getIntExtra(PROFILE, -1);
-                profile = mBoundService.profiles.get(profile_no);
-                mBoundService.saveProfile(profile_no);
-            }
-            if (resultCode == RESULT_CANCELED) {
-                //Do nothing ie person did not hit save button
-            }
-
-    }
 
     @Override
     protected void onResume(){
@@ -176,6 +162,5 @@ public class NavigationDrawer extends ActionBarActivity {
         if (mIsBound) {
             doUnbindService();
         }
-        mBoundService.stopSelf();
     }
 }

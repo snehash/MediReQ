@@ -30,7 +30,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bttn_save_contact"
+            android:id="@+id/bttn_save_surgical"
             android:text="@string/SaveChanges"
             android:background="@color/darkpurple"
             android:layout_marginTop="15dp"/>
