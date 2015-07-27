@@ -21,11 +21,89 @@
     <string name="address">Address:</string>
     <string name="email">Email:</string>
     <string name="phone">Phone:</string>
-    <string name="emergeny">Emergency Contact:</string>
+    <string name="emergeny">Emergency Contact</string>
     <string name="SaveChanges">Save Changes</string>
+    <string name="Other">Other</string>
+    <string name="LastVisit">Date of List Visit:</string>
+    <string name="PhysicanNumber">Physican Number:</string>
+    <string name="PhysicanName">Physican Name:</string>
+    <string name="Height">Height:</string>
+    <string name="Weight">Weight (lbs):</string>
+    <string name="Age">Age:</string>
+    <string name="Birthday">Birthdate:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="gender">Gender:</string>
 
     <string-array name="categories">
-        <item>Contact Information</item>
-        <item>Medication</item>
+        <item>Personal</item>
+        <item>Past Conditions</item>
+        <item>Surgical History</item>
+        <item>Medical Allergies</item>
+        <item>Behavior</item>
+        <item>Family History</item>
     </string-array>
+    <string name="title_activity_past_conditions">PastConditionsActivity</string>
+    <string name="PastConditions">Past Conditions</string>
+    <string name="hosptialized">Ever been hospitialized?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="hepatitis">Tested for hepatitis?</string>
+    <string name="hepB">Vaccinated for hepatitis B?</string>
+    <string name="hepA">Vaccinated for hepatitis A?</string>
+    <string name="std">STD?</string>
+    <string name="heartdisease">Heart disease?</string>
+    <string name="highchol">High cholesterol</string>
+    <string name="highbp">High blood pressure?</string>
+    <string name="lowbp">Low blood pressure?</string>
+    <string name="heartburn">Heartburn?</string>
+    <string name="anemia">Anemia or blood problems?</string>
+    <string name="swollenankles">Swollen ankels?</string>
+    <string name="shortbreath">Shortness of breath?</string>
+    <string name="asthma">Asthma?</string>
+    <string name="cough">Lung problems/cough?</string>
+    <string name="sinus">Sinus problems?</string>
+    <string name="seasonalallergies">Seasonal allergies?</string>
+    <string name="otherallergies">Other allergies?</string>
+    <string name="tonsillitis">Tonsillitis</string>
+    <string name="earproblem">Ear problems?</string>
+    <string name="eyedisorder">Eye disorder/glaucoma?</string>
+    <string name="seizures">Seizures?</string>
+    <string name="stroke">Stroke?</string>
+    <string name="headache">Headache/migranes?</string>
+    <string name="neurologicalproblems">Neurological problems?</string>
+    <string name="depression">Depression/anxiety?</string>
+    <string name="psych">Psychiatric care?</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="kidney">Kidney/bladder problems?</string>
+    <string name="liver">Liver problems?</string>
+    <string name="arthitis">Arthritis?</string>
+    <string name="cancer">Cancer?</string>
+    <string name="ulcer">Ulcer/colitis?</string>
+    <string name="thyroid">Thyroid problems?</string>
+    <string name="details">Details:</string>
+    <string name="questions">Had/have any of the following conditions:</string>
+    <string name="title_activity_surgical_history">SurgicalHistory</string>
+    <string name="SugricalHistory">Surgical History</string>
+    <string name="title_activity_medical_allergies">MedicalAllergies</string>
+    <string name="latex">Latex</string>
+    <string name="pencillin">Penicillin</string>
+    <string name="MedicalAllergies">Medical Allergies</string>
+    <string name="title_activity_behavior">BehaviorActivity</string>
+    <string name="coffee">Drink coffee and/or tea?</string>
+    <string name="title_activity_family_history">FamilyHistoryActivity</string>
+    <string name="exercise">Exercise weekly?</string>
+    <string name="alcohol">Drink alcohol?</string>
+    <string name="tobacco">Chew or smoke tobacco?</string>
+    <string name="Behavior">Behavior</string>
+    <string name="Doyou">Do you:</string>
+    <string name="Mother">Mother</string>
+    <string name="FamilyHistory">Family History</string>
+    <string name="Living">Living:</string>
+    <string name="seriousillness">Serious Illnesses:</string>
+    <string name="Father">Father</string>
+    <string name="Sibilings">Sibilings</string>
+    <string name="famhistoryques">Does your family have a history of the following:</string>
+    <string name="HIV">HIV disease/AIDS</string>
 </resources>

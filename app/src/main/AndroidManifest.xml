@@ -24,6 +24,26 @@
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer" >
         </activity>
+        <activity
+            android:name=".PastConditionsActivity"
+            android:label="@string/title_activity_past_conditions" >
+        </activity>
+        <activity
+            android:name=".SurgicalHistory"
+            android:label="@string/title_activity_surgical_history" >
+        </activity>
+        <activity
+            android:name=".MedicalAllergies"
+            android:label="@string/title_activity_medical_allergies" >
+        </activity>
+        <activity
+            android:name=".BehaviorActivity"
+            android:label="@string/title_activity_behavior" >
+        </activity>
+        <activity
+            android:name=".FamilyHistoryActivity"
+            android:label="@string/title_activity_family_history" >
+        </activity>
     </application>
 
 </manifest>

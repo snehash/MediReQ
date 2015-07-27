@@ -10,13 +10,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/lv_categories"></ListView>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bttn_send"
-        android:onClick="transferData"
-        android:text="@string/SaveChanges"
-        android:background="@color/darkpurple"
-        android:layout_marginTop="15dp"/>
+
 
 </LinearLayout>
