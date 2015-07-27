@@ -37,23 +37,14 @@
             <TextView android:text="@string/tobacco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_tobacco"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/tobacco_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/tobacco_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
+                android:text="@string/yes" />
 
-            </RadioGroup>
 
         </LinearLayout>
 
@@ -69,20 +60,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_alcohol"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/alcohol_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/alcohol_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -99,20 +81,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_coffee"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/coffee_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/coffee_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -128,20 +101,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_exercise"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/exercise_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/exercise_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 

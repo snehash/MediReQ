@@ -1,12 +1,13 @@
 package com.example.sneha.medireq;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class FamilyHistoryActivity extends ActionBarActivity {
+public class FamilyHistoryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,6 +2,7 @@ package com.example.sneha.medireq;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.format.Time;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -16,141 +17,102 @@ import java.util.Date;
 /**
  * Created by Sneha on 7/25/2015.
  */
-public class Profile implements Parcelable{
-    private String name, address, phone, email, emergencyContact, emergencyNumber;
-    private Date lastUpdate;
+public class Profile{
+    public String name, address, phone, email, emergencyContact, emergencyNumber, gender,
+            height, docname, docno,currMedi,vitamins, pastConddetails, surgicalHistory,
+            allergiesOther,motherIllness, fatherIllness, sibilingIllness,otherFamilyHistory,
+            lastVisit, birthday, momLiving, dadLiving;
+    public Time lastUpdate;
+    public int age, weight, momAge, dadAge;
+    public boolean hospitalized, heptest, hepB, hepA, std, heartDisease,highcholest,highbp,
+            lowbp, hearburn, anemia,swollenankles, shortbreath, asthma, lungprobs,sinus,
+            seasonalAllergies, otherAllergies, tonsillitis, earprob, eye, seizure, stroke,
+            neuro, depression, psych, diabetes, kidney, liver, arthritis, cancer, ulcer, thyroid,
+            penicillin, latex, tobacco, alcohol, coffee, exercise, fam_anemia, fam_cancer,
+            fam_diabetes, fam_glaucoma, fam_hd, fam_hbp, fam_hiv, fam_depression, fam_stroke;
+    public final String filename;
 
-    public Profile(String name, String address, String phone, String email, String emergencyContact, String emergencyNumber){
+
+    public Profile(String name){
         this.name = name;
-        this.address = address;
-        this.phone = phone;
-        this.email = email;
-        this.emergencyContact = emergencyContact;
-        this.emergencyNumber = emergencyNumber;
+        filename = "/system/bin/MediReQ_" + name;
+        address = "";
+        phone = "";
+        email = "";
+        emergencyContact = "";
+        emergencyNumber="";
+        gender = "";
+        height = "";
+        docname = "";
+        docno = "";
+        currMedi = "";
+        vitamins = "";
+        pastConddetails= "";
+        surgicalHistory = "";
+        allergiesOther = "";
+        motherIllness = "";
+        fatherIllness = "";
+        sibilingIllness = "";
+        otherFamilyHistory = "";
+        birthday = "";
+        lastUpdate = new Time(Time.getCurrentTimezone());
+        lastUpdate.setToNow();
+        lastVisit = "";
+        age = -1;
+        weight = -1;
+        momAge = -1;
+        dadAge = -1;
+        hospitalized = false;
+        heptest = false;
+        hepB = true;
+        hepA = true;
+        std = false;
+        heartDisease = false;
+        highcholest = false;
+        highbp = false;
+        lowbp = false;
+        hearburn = false;
+        anemia = false;
+        swollenankles = false;
+        shortbreath = false;
+        asthma = false;
+        lungprobs = false;
+        sinus = false;
+        seasonalAllergies = false;
+        otherAllergies = false;
+        tonsillitis = false;
+        earprob = false;
+        eye = false;
+        seizure = false;
+        stroke = false;
+        neuro = false;
+        depression = false;
+        psych = false;
+        diabetes = false;
+        kidney = false;
+        liver = false;
+        arthritis = false;
+        cancer = false;
+        ulcer = false;
+        thyroid = false;
+        penicillin = false;
+        latex = false;
+        tobacco = false;
+        alcohol = false;
+        coffee = false;
+        exercise = false;
+        momLiving = "";
+        dadLiving = "";
+        fam_anemia = false;
+        fam_cancer = false;
+        fam_diabetes = false;
+        fam_glaucoma = false;
+        fam_hd = false;
+        fam_hbp = false;
+        fam_hiv = false;
+        fam_depression = false;
+        fam_stroke = false;
 
     }
 
-    public Profile(){
-        name = null;
-        address = null;
-        phone = null;
-        email = null;
-        emergencyContact = null;
-        emergencyNumber = null;
-
-    }
-    public Profile(Parcel in){
-        readFromParcel(in);
-    }
-
-    private void readFromParcel(Parcel in) {
-        name = in.readString();
-        address = in.readString();
-        phone = in.readString();
-        email = in.readString();
-        emergencyContact= in.readString();
-        emergencyNumber = in.readString();
-        lastUpdate = (Date) in.readSerializable();
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEmergencyContact() {
-        return emergencyContact;
-    }
-
-    public void setEmergencyContact(String emergencyContact) {
-        this.emergencyContact = emergencyContact;
-    }
-
-
-
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(address);
-        dest.writeString(phone);
-        dest.writeString(email);
-        dest.writeString(emergencyContact);
-        dest.writeString(emergencyNumber);
-        dest.writeSerializable(lastUpdate);
-    }
-
-    public String getEmergencyNumber() {
-        return emergencyNumber;
-    }
-
-    public void setEmergencyNumber(String emergencyNumber) {
-        this.emergencyNumber = emergencyNumber;
-    }
-
-    @Override
-    public String toString(){
-        String str = "";
-        str += "Name: " + name;
-        str += "Address: " + address;
-        str += "Phone: " + phone;
-        str += "Email: " + email;
-        str += "EmerC: " + emergencyContact;
-        str += "EmerN: " + emergencyNumber;
-        return str;
-    }
-
-    public static final Parcelable.Creator CREATOR =
-            new Parcelable.Creator() {
-                public Profile createFromParcel(Parcel in) {
-                    return new Profile(in);
-                }
-
-                public Profile[] newArray(int size) {
-                    return new Profile[size];
-                }
-            };
 }

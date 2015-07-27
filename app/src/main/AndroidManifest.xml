@@ -44,6 +44,12 @@
             android:name=".FamilyHistoryActivity"
             android:label="@string/title_activity_family_history" >
         </activity>
+
+        <service
+            android:name=".BackgroundService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

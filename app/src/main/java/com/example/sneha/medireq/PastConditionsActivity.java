@@ -1,12 +1,16 @@
 package com.example.sneha.medireq;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class PastConditionsActivity extends ActionBarActivity {
+public class PastConditionsActivity extends Activity {
+    private BackgroundService mBoundService;
+    private boolean mIsBound;
+    private Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

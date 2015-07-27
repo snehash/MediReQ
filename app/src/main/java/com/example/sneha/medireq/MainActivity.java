@@ -1,9 +1,13 @@
 package com.example.sneha.medireq;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -27,15 +31,17 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-//TODO: If name is changed, filename will be a problem
-public class MainActivity extends ActionBarActivity {
-    private ArrayList<String> names;
-    private ArrayAdapter<String> mAdapter;
+public class MainActivity extends Activity {
+
     private ListView mListView;
     private Button mButton;
+    private ArrayAdapter<String> mAdapter;
     private Context context;
+    private BackgroundService mBoundService;
+    private boolean mIsBound;
+
+    private static final String filename = "/system/bin/Profiles_MediReQ";
     private String new_Name;
-    private static final String filename = "com.example.MediReQ.names.txt";
 
 
     @Override
@@ -43,16 +49,22 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        names = new ArrayList<String>();
-        readNamesFromFile();
-        mAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1, names);
+        Intent intent = new Intent(context, BackgroundService.class);
+        if (!BackgroundService.STARTED) {
+            startService(intent);
+        }
+        doBindService();
+    }
+
+    private void init(){
+        mAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1, mBoundService.names);
         mListView = (ListView) findViewById(R.id.profiles);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(context, NavigationDrawer.class);
-                intent.putExtra(NavigationDrawer.PROFILE, names.get(position));
+                intent.putExtra(NavigationDrawer.PROFILE, position);
                 startActivity(intent);
 
             }
@@ -66,8 +78,8 @@ public class MainActivity extends ActionBarActivity {
                         .setMessage("Are you sure you want to delete this profile? You will not be able to recover it.")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                                names.remove(i);
+                                // Todo: remove from files
+                                mBoundService.remove(position);
                                 //also delete file here
                                 mAdapter.notifyDataSetChanged();
 
@@ -101,10 +113,11 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         new_Name = input.getText().toString();
-                        Profile profile = new Profile();
-                        profile.setName(new_Name);
-                        names.add(new_Name);
-                        mAdapter.notifyDataSetChanged();
+                        if(!mBoundService.names.contains(new_Name)) {
+                            Profile profile = new Profile(new_Name);
+                            mBoundService.names.add(new_Name);
+                            mAdapter.notifyDataSetChanged();
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -125,6 +138,11 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
+        if(mIsBound){
+            doUnbindService();
+        }
+        mBoundService.stopSelf();
+        /*
             try {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(filename, Context.MODE_PRIVATE));
                 BufferedWriter writer = new BufferedWriter(outputStreamWriter);
@@ -136,6 +154,7 @@ public class MainActivity extends ActionBarActivity {
             } catch (IOException e) {
                 Log.e("Exception", "File write failed: " + e.toString());
             }
+            */
 
     }
 
@@ -161,6 +180,8 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /*
     private void readNamesFromFile() {
 
         try {
@@ -184,6 +205,29 @@ public class MainActivity extends ActionBarActivity {
             Log.e("login activity", "Can not read file: " + e.toString());
         }
 
+    }
+    */
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            mBoundService = ((BackgroundService.LocalBinder)service).getService();
+            init();
+        }
+
+        public void onServiceDisconnected(ComponentName className){ mBoundService = null;}
+
+    };
+
+    private void doBindService(){
+        bindService(new Intent(MainActivity.this, BackgroundService.class), mConnection, 0);
+        mIsBound = true;
+    }
+
+    private void doUnbindService(){
+        if (mIsBound){
+            unbindService(mConnection);
+            mIsBound = false;
+        }
     }
 
 

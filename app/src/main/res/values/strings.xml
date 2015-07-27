@@ -105,5 +105,8 @@
     <string name="Father">Father</string>
     <string name="Sibilings">Sibilings</string>
     <string name="famhistoryques">Does your family have a history of the following:</string>
-    <string name="HIV">HIV disease/AIDS</string>
+    <string name="HIV">HIV disease/AIDS?</string>
+    <string name="vitamins">Vitamins/Supplements:</string>
+    <string name="currentMedications">Current Medications:</string>
+    <string name="unknown">unknown</string>
 </resources>

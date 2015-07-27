@@ -155,16 +155,18 @@
             <RadioButton android:id="@+id/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/male" />
+                android:text="@string/male"
+                android:onClick="onGenderButtonClicked"/>
             <RadioButton android:id="@+id/female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/female" />
+                android:text="@string/female"
+                android:onClick="onGenderButtonClicked"/>
             <RadioButton android:id="@+id/other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/other"
-                android:onClick="onRadioButtonClicked"/>
+                android:onClick="onGenderButtonClicked"/>
         </RadioGroup>
 
             />
@@ -297,6 +299,44 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tv_lastvisit"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView android:text="@string/currentMedications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="20sp"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tv_medications"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView android:text="@string/vitamins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="20sp"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tv_vitamins"
             />
 
     </LinearLayout>

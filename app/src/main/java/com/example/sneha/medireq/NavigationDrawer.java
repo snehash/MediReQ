@@ -1,7 +1,10 @@
 package com.example.sneha.medireq;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,37 +33,26 @@ public class NavigationDrawer extends ActionBarActivity {
     private ArrayAdapter<String> mAdapter;
     private Context context;
     private Profile profile;
+    private BackgroundService mBoundService;
+    private boolean mIsBound;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+        Intent intent = new Intent(this, BackgroundService.class);
+        if (!BackgroundService.STARTED) {
+            startService(intent);
+        }
+        doBindService();
+    }
+
+    private void init(){
+
         Intent intent = getIntent();
-        String name = intent.getStringExtra(PROFILE);
-        try {
-            InputStream inputStream = openFileInput("com.example.MediReQ." + name);
-
-            if ( inputStream != null ) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String Address = bufferedReader.readLine();
-                String Email = bufferedReader.readLine();
-                String Phone = bufferedReader.readLine();
-                String EmerCon = bufferedReader.readLine();
-                String EmPhone = bufferedReader.readLine();
-                profile = new Profile(name, Address, Email, Phone, EmerCon, EmPhone);
-                inputStream.close();
-            }
-        }
-        catch (FileNotFoundException e) {
-            Log.e("main activity", "File not found: " + e.toString());
-            profile = new Profile();
-            profile.setName(name);
-        } catch (IOException e) {
-            Log.e("main activity", "Can not read file: " + e.toString());
-        }
-
+        int profile_no = intent.getIntExtra(PROFILE, -1);
+        profile = mBoundService.profiles.get(profile_no);
 
         mListView = (ListView) findViewById(R.id.lv_categories);
         context = this;
@@ -72,11 +64,37 @@ public class NavigationDrawer extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selection = categories[position];
                 switch(selection) {
-                    case "Contact Information":
-                        Intent intent = new Intent(context, ContactInformationActivity.class);
-                        intent.putExtra(PROFILE, profile);
-                        startActivityForResult(intent, UPDATEPROFILE);
+                    case "Personal":
+                        Intent intent_personal = new Intent(context, ContactInformationActivity.class);
+                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        startActivity(intent_personal);
                         break;
+                    case "Past Conditions":
+                        Intent intent_pastcond = new Intent(context, PastConditionsActivity.class);
+                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        startActivity(intent_pastcond);
+                        break;
+                    case "Surgical History":
+                        Intent intent_surg = new Intent(context, SurgicalHistory.class);
+                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        startActivity(intent_surg);
+                        break;
+                    case "Medical Allergies":
+                        Intent intent_allergies = new Intent(context, MedicalAllergies.class);
+                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        startActivity(intent_allergies);
+                        break;
+                    case "Behavior":
+                        Intent intent_behav = new Intent(context, BehaviorActivity.class);
+                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        startActivity(intent_behav);
+                        break;
+                    case "Family History":
+                        Intent intent_fam = new Intent(context, FamilyHistoryActivity.class);
+                        intent.putExtra(PROFILE, mBoundService.profiles.indexOf(profile));
+                        startActivity(intent_fam);
+                        break;
+
                 }
 
 
@@ -91,10 +109,12 @@ public class NavigationDrawer extends ActionBarActivity {
 
 
             if(resultCode == RESULT_OK){
-                profile = data.getParcelableExtra(PROFILE);
+                int profile_no = data.getIntExtra(PROFILE, -1);
+                profile = mBoundService.profiles.get(profile_no);
+                mBoundService.saveProfile(profile_no);
             }
             if (resultCode == RESULT_CANCELED) {
-                //Write your code if there's no result
+                //Do nothing ie person did not hit save button
             }
 
     }
@@ -102,7 +122,6 @@ public class NavigationDrawer extends ActionBarActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        System.out.println(profile);
     }
 
     @Override
@@ -127,7 +146,36 @@ public class NavigationDrawer extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void transferData(View view){
-        //code for data transfer goes here
+
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            mBoundService = ((BackgroundService.LocalBinder)service).getService();
+            init();
+        }
+
+        public void onServiceDisconnected(ComponentName className){ mBoundService = null;}
+
+    };
+
+    private void doBindService(){
+        bindService(new Intent(NavigationDrawer.this, BackgroundService.class), mConnection, 0);
+        mIsBound = true;
+    }
+
+    private void doUnbindService(){
+        if (mIsBound){
+            unbindService(mConnection);
+            mIsBound = false;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mIsBound) {
+            doUnbindService();
+        }
+        mBoundService.stopSelf();
     }
 }

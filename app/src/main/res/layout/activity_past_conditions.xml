@@ -34,20 +34,12 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_hospitalized"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/hosptialized_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/hosptialized_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
+                android:text="@string/yes" />
 
-            </RadioGroup>
 
             </LinearLayout>
 
@@ -63,20 +55,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_hep"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/hepatitis_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/hepatitis_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -92,20 +75,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_hepB"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/hepB_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/hepB_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -121,20 +95,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_hepA"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/hepA_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/hepA_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -159,20 +124,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_std"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/std_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/std_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -188,20 +144,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_heartdisease"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/heartdisease_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/heartdisease_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -216,20 +163,11 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"/>
 
-                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="fill_parent"
+                <CheckBox
+                    android:id = "@+id/checkbox_highchol"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton android:id="@+id/highchol_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/yes" />
-                    <RadioButton android:id="@+id/highchol_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/no"/>
-
-                </RadioGroup>
+                    android:text="@string/yes" />
 
             </LinearLayout>
 
@@ -245,20 +183,11 @@
 
                     android:textSize="20sp"/>
 
-                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="fill_parent"
+                <CheckBox
+                    android:id = "@+id/checkbox_highbp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton android:id="@+id/highbp_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/yes" />
-                    <RadioButton android:id="@+id/highbp_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/no"/>
-
-                </RadioGroup>
+                    android:text="@string/yes" />
 
 
 
@@ -276,20 +205,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_lowbp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/lowbp_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/lowbp_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -305,20 +225,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_heartburn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/heartburn_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/heartburn_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -334,20 +245,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_anemia"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/anemia_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/anemia_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -363,20 +265,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_swollenankles"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/swollenankles_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/swollenankles_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -392,20 +285,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_shortbreath"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/shortbreath_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/shortbreath_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -421,20 +305,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_asthma"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/asthma_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/asthma_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -450,20 +325,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_cough"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/cough_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/cough_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -479,20 +345,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_sinus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/sinus_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/sinus_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -508,20 +365,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_seasonalallergies"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/seasonallergies_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/seasonalallergies_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -537,20 +385,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_otherallergies"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/otherallergies_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/otherallergies_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -566,20 +405,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_tonsillitis"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/tonsillitis_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/tonsillitis_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -595,20 +425,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_earproblem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/earproblems_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/earproblems_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -624,20 +445,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_eyedisorder"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/eyedisorder_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/eyedisorder_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -653,20 +465,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_seizures"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/seizures_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/seizures_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -683,20 +486,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_stroke"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/stroke_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/stroke_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -712,20 +506,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_headache"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/headache_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/headache_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -741,20 +526,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_neuro"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/neurologicalproblems_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/neurologicalproblems_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -770,20 +546,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_depression"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/despression_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/depression_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -799,20 +566,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_psych"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/psych_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/psych_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -828,20 +586,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_diabetes"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/diabetes_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/diabetes_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -857,20 +606,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_kidney"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/kidney_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/kidney_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -886,20 +626,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_liver"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/liver_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/liver_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -915,20 +646,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_arthitis"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/arthritis_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/arthitis_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -944,20 +666,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_cancer"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/cancer_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/cancer_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -973,20 +686,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_ulcer"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/ulcer_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/ulcer_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
@@ -1002,20 +706,11 @@
 
                 android:textSize="20sp"/>
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <CheckBox
+                android:id = "@+id/checkbox_thyroid"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/thyroid_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yes" />
-                <RadioButton android:id="@+id/thyroid_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no"/>
-
-            </RadioGroup>
+                android:text="@string/yes" />
 
         </LinearLayout>
 
