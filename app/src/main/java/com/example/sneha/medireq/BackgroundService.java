@@ -9,8 +9,6 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,9 +46,9 @@ public class BackgroundService extends Service {
         ArrayList<String> profile_filenames = new ArrayList<String>();
         //TODO read from file
         try {
-            FileInputStream inputStream = new FileInputStream(new File(MainActivity.MASTER_FILE));
+            InputStream inputStream = openFileInput(MainActivity.MASTER_FILE);
 
-            if (inputStream != null) {
+            if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String receiveString = "";
@@ -102,6 +100,7 @@ public class BackgroundService extends Service {
 
     public void remove(String filename, int position){
         names.remove(position);
+        //TODO:Delete this filename from master file
         //TODO: delete/clear profile file
         profiles.remove(filename);
     }

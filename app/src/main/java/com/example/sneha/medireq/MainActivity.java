@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
     private BackgroundService mBoundService;
     private boolean mIsBound;
 
-    public static final String MASTER_FILE = "/system/bin/Profiles_MediReQ";
+    public static final String MASTER_FILE = "Profiles_MediReQ";
     private String new_Name;
 
 
