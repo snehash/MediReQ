@@ -1,10 +1,21 @@
 package com.example.sneha.medireq;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.jar.Attributes;
@@ -35,7 +46,27 @@ public class BackgroundService extends Service {
         names = new ArrayList<String>();
         System.out.println("Running onCreate for Service");
         ArrayList<String> profile_filenames = new ArrayList<String>();
-        //TODO: read master file and populate profile_filenames
+        //TODO read from file
+        try {
+            FileInputStream inputStream = new FileInputStream(new File(MainActivity.MASTER_FILE));
+
+            if (inputStream != null) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    profile_filenames.add(receiveString);
+                }
+
+                inputStream.close();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
         for(String filename: profile_filenames){
             profiles.put(filename, createFromFile(filename));
             names.add(profiles.get(filename).name);
@@ -55,12 +86,22 @@ public class BackgroundService extends Service {
             writeToFile(profile);
         }
 
-        //TODO: write filenames to master file
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(MainActivity.MASTER_FILE, Context.MODE_PRIVATE));
+            BufferedWriter writer = new BufferedWriter(outputStreamWriter);
+            for(String filename: profiles.keySet()) {
+                writer.write(filename);
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+
     }
 
     public void remove(String filename, int position){
         names.remove(position);
-        //TODO:Delete this filename from master file
         //TODO: delete/clear profile file
         profiles.remove(filename);
     }

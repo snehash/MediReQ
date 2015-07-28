@@ -2,6 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.sneha.medireq.MedicalAllergies">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+    <!-- <item android:id="@+id/ma_personal" android:title="@string/Personal"
+    app:showAsAction="never" />
+    <item android:id="@+id/ma_past_cond" android:title="@string/PastConditions"
+        app:showAsAction="never" />
+    <item android:id="@+id/ma_surgical_history" android:title="@string/SugricalHistory"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/ma_behav" android:title="@string/Behavior"
+        app:showAsAction="never" />
+    <item android:id="@+id/ma_famhis" android:title="@string/FamilyHistory"
+        app:showAsAction="never" /> -->
 </menu>

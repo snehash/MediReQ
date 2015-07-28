@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/bttn_save_behavior"
             android:text="@string/SaveChanges"
-            android:background="@color/pink"
+            android:background="@drawable/pink_button"
             android:textColor="@color/darkred"
             android:layout_marginTop="15dp"/>
 

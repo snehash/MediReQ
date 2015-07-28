@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:textSize="25dp"
     android:textColor = "@color/darkred"
-    android:textStyle="bold"
     android:paddingBottom="12dip"
     android:paddingTop="12dip"
     android:paddingLeft="5dp">

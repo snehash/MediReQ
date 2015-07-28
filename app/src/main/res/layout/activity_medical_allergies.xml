@@ -102,8 +102,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/bttn_save_medical_allergies"
             android:text="@string/SaveChanges"
-            android:background="@color/pink"
-            android:textColor="@color/darkred"
+            android:background="@drawable/pink_button"            android:textColor="@color/darkred"
             android:textSize="17dp"
             android:layout_marginTop="15dp"/>
 

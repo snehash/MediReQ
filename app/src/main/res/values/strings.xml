@@ -112,4 +112,7 @@
     <string name="personal">Personal Information</string>
     <string name="haveyou">Have you been:</string>
     <string name="areyouallergic">Are you allergic to any of the following:</string>
+    <string name="Personal">Personal Information</string>
+    <string name="MedicalRecordsMenu">Medical Records Menu</string>
+    <string name="add_profile">Add Profile</string>
 </resources>

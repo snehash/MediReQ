@@ -1,5 +1,6 @@
 package com.example.sneha.medireq;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +25,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class NavigationDrawer extends ActionBarActivity {
+public class NavigationDrawer extends Activity {
     public static String PROFILE = "com.example.MediReQ.profile";
     public static int UPDATEPROFILE = 6;
 

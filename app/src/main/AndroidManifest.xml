@@ -18,31 +18,31 @@
         </activity>
         <activity
             android:name=".ContactInformationActivity"
-            android:label="@string/title_activity_contact_information" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".NavigationDrawer"
-            android:label="@string/title_activity_navigation_drawer" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".PastConditionsActivity"
-            android:label="@string/title_activity_past_conditions" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".SurgicalHistory"
-            android:label="@string/title_activity_surgical_history" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".MedicalAllergies"
-            android:label="@string/title_activity_medical_allergies" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".BehaviorActivity"
-            android:label="@string/title_activity_behavior" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".FamilyHistoryActivity"
-            android:label="@string/title_activity_family_history" >
+            android:label="@string/app_name" >
         </activity>
 
         <service

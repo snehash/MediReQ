@@ -1,5 +1,6 @@
 package com.example.sneha.medireq;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.drawable.ColorDrawable;
 import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -40,7 +43,7 @@ public class MainActivity extends Activity {
     private BackgroundService mBoundService;
     private boolean mIsBound;
 
-    private static final String MASTER_FILE = "/system/bin/Profiles_MediReQ";
+    public static final String MASTER_FILE = "/system/bin/Profiles_MediReQ";
     private String new_Name;
 
 
@@ -65,12 +68,12 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(context, NavigationDrawer.class);
                 String filename = "";
-                for (Profile profile: mBoundService.profiles.values()){
-                    if(profile.name.equals(mBoundService.names.get(position))){
+                for (Profile profile : mBoundService.profiles.values()) {
+                    if (profile.name.equals(mBoundService.names.get(position))) {
                         filename = profile.filename;
                     }
                 }
-                intent.putExtra(NavigationDrawer.PROFILE,filename);
+                intent.putExtra(NavigationDrawer.PROFILE, filename);
                 startActivity(intent);
 
             }
@@ -110,53 +113,7 @@ public class MainActivity extends Activity {
         });
 
 
-        mButton = (Button) findViewById(R.id.bttn_add_profiles);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Profile for:");
 
-
-                final EditText input = new EditText(context);
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setView(input);
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new_Name = input.getText().toString();
-                        if(!mBoundService.names.contains(new_Name)) {
-                            Profile profile;
-                            if(mBoundService.profiles.containsKey("/system/bin/MediReQ_" + new_Name)) {
-                                int i = 2;
-                                String try_file = "/system/bin/MediReQ_" + new_Name + i;
-                                while(mBoundService.profiles.containsKey(try_file)){
-                                    i++;
-                                    try_file = "/system/bin/MediReQ_" + new_Name + i;
-                                }
-                                profile = new Profile(new_Name, try_file);
-                            }
-                            else{
-                                profile = new Profile(new_Name);
-                            }
-
-                            mBoundService.names.add(new_Name);
-                            mBoundService.profiles.put(profile.filename, profile);
-                            mAdapter.notifyDataSetChanged();
-                        }
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
-            }
-        });
 
 
 
@@ -199,10 +156,49 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Profile for:");
+
+
+                final EditText input = new EditText(context);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new_Name = input.getText().toString();
+                        if(!mBoundService.names.contains(new_Name)) {
+                            Profile profile;
+                            if(mBoundService.profiles.containsKey("/system/bin/MediReQ_" + new_Name)) {
+                                int i = 2;
+                                String try_file = "/system/bin/MediReQ_" + new_Name + i;
+                                while(mBoundService.profiles.containsKey(try_file)){
+                                    i++;
+                                    try_file = "/system/bin/MediReQ_" + new_Name + i;
+                                }
+                                profile = new Profile(new_Name, try_file);
+                            }
+                            else{
+                                profile = new Profile(new_Name);
+                            }
+
+                            mBoundService.names.add(new_Name);
+                            mBoundService.profiles.put(profile.filename, profile);
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+
+
 
         return super.onOptionsItemSelected(item);
     }

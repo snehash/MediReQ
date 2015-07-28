@@ -2,6 +2,7 @@ package com.example.sneha.medireq;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 
 public class FamilyHistoryActivity extends Activity {
@@ -35,6 +37,8 @@ public class FamilyHistoryActivity extends Activity {
     private EditText other, momAge, dadAge;
     private String currentMom, currentDad;
     private Button mSave;
+    private Context context;
+    private String filename;
 
 
 
@@ -43,6 +47,7 @@ public class FamilyHistoryActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
         setContentView(R.layout.activity_family_history);
         Intent intent = new Intent(this, BackgroundService.class);
         if (!BackgroundService.STARTED) {
@@ -55,7 +60,7 @@ public class FamilyHistoryActivity extends Activity {
 
         Intent intent = getIntent();
 
-        final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
+        filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         System.out.println("Filename is " + filename);
         profile = mBoundService.profiles.get(filename);
 
@@ -105,6 +110,8 @@ public class FamilyHistoryActivity extends Activity {
                 profile.fam_depression = fam_depression.isChecked();
                 profile.fam_stroke = fam_stroke.isChecked();
                 mBoundService.saveProfile(filename, profile);
+                Toast.makeText(context, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -194,9 +201,35 @@ public class FamilyHistoryActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        /*switch(id){
+            case R.id.fam_personal:
+                Intent intent_personal = new Intent(context, ContactInformationActivity.class);
+                intent_personal.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_personal);
+                break;
+            case R.id.fam_past_cond:
+                Intent intent_pastcond = new Intent(context, PastConditionsActivity.class);
+                intent_pastcond.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_pastcond);
+                break;
+            case R.id.fam_surgical_history:
+                Intent intent_surg = new Intent(context, SurgicalHistory.class);
+                intent_surg.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_surg);
+                break;
+            case R.id.fam_medi_allergies:
+                Intent intent_allergies = new Intent(context, MedicalAllergies.class);
+                intent_allergies.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_allergies);
+                break;
+            case R.id.fam_behav:
+                Intent intent_behav = new Intent(context, BehaviorActivity.class);
+                intent_behav.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_behav);
+                break;
+
+
+        } */
 
         return super.onOptionsItemSelected(item);
     }

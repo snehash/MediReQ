@@ -2,6 +2,7 @@ package com.example.sneha.medireq;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class PastConditionsActivity extends Activity {
@@ -25,11 +27,14 @@ public class PastConditionsActivity extends Activity {
     arthritis, cancer, ulcer, thyroid;
     private EditText details;
     private Button mButton;
+    private Context context;
+    private String filename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_conditions);
+        context = this;
         Intent intent = new Intent(this, BackgroundService.class);
         if (!BackgroundService.STARTED) {
             startService(intent);
@@ -39,7 +44,7 @@ public class PastConditionsActivity extends Activity {
 
     private void init(){
         Intent intent = getIntent();
-        final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
+        filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
         hospitalized = (CheckBox) findViewById(R.id.checkbox_hospitalized);
         hep = (CheckBox) findViewById(R.id.checkbox_hep);
@@ -155,6 +160,8 @@ public class PastConditionsActivity extends Activity {
                 profile.pastConddetails = details.getText().toString();
 
                 mBoundService.saveProfile(filename, profile);
+                Toast.makeText(context, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -174,11 +181,35 @@ public class PastConditionsActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        /*
+        switch(id){
+            case R.id.pc_personal:
+                Intent intent_personal = new Intent(context, ContactInformationActivity.class);
+                intent_personal.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_personal);
+                break;
+            case R.id.pc_surgical_history:
+                Intent intent_surg = new Intent(context, SurgicalHistory.class);
+                intent_surg.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_surg);
+                break;
+            case R.id.pc_medi_allergies:
+                Intent intent_allergies = new Intent(context, MedicalAllergies.class);
+                intent_allergies.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_allergies);
+                break;
+            case R.id.pc_behav:
+                Intent intent_behav = new Intent(context, BehaviorActivity.class);
+                intent_behav.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_behav);
+                break;
+            case R.id.pc_famhis:
+                Intent intent_fam = new Intent(context, FamilyHistoryActivity.class);
+                intent_fam.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_fam);
+                break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        } */
 
         return super.onOptionsItemSelected(item);
     }

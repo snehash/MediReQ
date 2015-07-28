@@ -47,6 +47,7 @@ public class ContactInformationActivity extends Activity {
     private Button mButton;
     private Context context;
     private String currentGender;
+    private String filename;
 
 
     @Override
@@ -64,7 +65,7 @@ public class ContactInformationActivity extends Activity {
 
         Intent intent = getIntent();
 
-        final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
+        filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         System.out.println("Filename is " + filename);
         profile = mBoundService.profiles.get(filename);
         System.out.println(mBoundService.profiles);
@@ -160,6 +161,8 @@ public class ContactInformationActivity extends Activity {
                 profile.gender = currentGender;
 
                 mBoundService.saveProfile(filename, profile);
+                Toast.makeText(context, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -207,10 +210,36 @@ public class ContactInformationActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        /*
+        switch(id){
+
+            case R.id.ci_past_cond:
+                Intent intent_pastcond = new Intent(context, PastConditionsActivity.class);
+                intent_pastcond.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_pastcond);
+                break;
+            case R.id.ci_surgical_history:
+                Intent intent_surg = new Intent(context, SurgicalHistory.class);
+                intent_surg.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_surg);
+                break;
+            case R.id.ci_medi_allergies:
+                Intent intent_allergies = new Intent(context, MedicalAllergies.class);
+                intent_allergies.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_allergies);
+                break;
+            case R.id.ci_behav:
+                Intent intent_behav = new Intent(context, BehaviorActivity.class);
+                intent_behav.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_behav);
+                break;
+            case R.id.ci_famhis:
+                Intent intent_fam = new Intent(context, FamilyHistoryActivity.class);
+                intent_fam.putExtra(NavigationDrawer.PROFILE, filename);
+                startActivity(intent_fam);
+                break;
+
+        } */
 
         return super.onOptionsItemSelected(item);
     }
