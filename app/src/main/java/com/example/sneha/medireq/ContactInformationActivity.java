@@ -141,7 +141,7 @@ public class ContactInformationActivity extends Activity {
             public void onClick(View v) {
 
                 profile.name = mName.getText().toString();
-                if(!mAge.getText().equals(""))
+                if(!mAge.getText().toString().equals(""))
                     profile.age = Integer.parseInt(mAge.getText().toString());
                 profile.address = mAddress.getText().toString();
                 profile.email = mEmail.getText().toString();
@@ -149,7 +149,7 @@ public class ContactInformationActivity extends Activity {
                 profile.emergencyNumber = mEmerNum.getText().toString();
                 profile.emergencyContact = mEmer.getText().toString();
                 profile.birthday = mBirthday.getText().toString();
-                if(!mAge.getText().equals(""))
+                if(!mAge.getText().toString().equals(""))
                     profile.weight = Integer.parseInt(mWeight.getText().toString());
                 profile.height = mHeight.getText().toString();
                 profile.docname = physicanName.getText().toString();

@@ -2,8 +2,9 @@
 <resources>
 
     <item name="pink" type="color">#FFFF8888</item>
+    <item name="lightpink" type="color">#44FF8888</item>
     <item name="red" type="color">#FFFF0000</item>
-    <item name="mediumpink" type="color">#FFFF4444</item>
+    <item name="mediumpink" type="color">#88FF8888</item>
     <item name="darkred" type="color">#FF6B0000</item>
     <item name="mediumred" type="color">#FFCC0000</item>
     <item name="white" type="color">#FFFFFFFF</item>

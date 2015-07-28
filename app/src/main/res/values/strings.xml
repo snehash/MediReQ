@@ -46,7 +46,7 @@
     </string-array>
     <string name="title_activity_past_conditions">PastConditionsActivity</string>
     <string name="PastConditions">Past Conditions</string>
-    <string name="hosptialized">Ever been hospitialized?</string>
+    <string name="hosptialized">Hospitialized?</string>
     <string name="yes">yes</string>
     <string name="no">no</string>
     <string name="hepatitis">Tested for hepatitis?</string>
@@ -83,12 +83,12 @@
     <string name="ulcer">Ulcer/colitis?</string>
     <string name="thyroid">Thyroid problems?</string>
     <string name="details">Details:</string>
-    <string name="questions">Had/have any of the following conditions:</string>
+    <string name="questions">Do you have/have you had any of the following conditions:</string>
     <string name="title_activity_surgical_history">SurgicalHistory</string>
     <string name="SugricalHistory">Surgical History</string>
     <string name="title_activity_medical_allergies">MedicalAllergies</string>
-    <string name="latex">Latex</string>
-    <string name="pencillin">Penicillin</string>
+    <string name="latex">Latex?</string>
+    <string name="pencillin">Penicillin?</string>
     <string name="MedicalAllergies">Medical Allergies</string>
     <string name="title_activity_behavior">BehaviorActivity</string>
     <string name="coffee">Drink coffee and/or tea?</string>
@@ -109,4 +109,7 @@
     <string name="vitamins">Vitamins/Supplements:</string>
     <string name="currentMedications">Current Medications:</string>
     <string name="unknown">unknown</string>
+    <string name="personal">Personal Information</string>
+    <string name="haveyou">Have you been:</string>
+    <string name="areyouallergic">Are you allergic to any of the following:</string>
 </resources>

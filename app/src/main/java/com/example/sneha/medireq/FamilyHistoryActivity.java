@@ -84,9 +84,9 @@ public class FamilyHistoryActivity extends Activity {
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!momAge.getText().equals(""))
+                if(!momAge.getText().toString().equals(""))
                     profile.momAge = Integer.parseInt(momAge.getText().toString());
-                if(!dadAge.getText().equals(""))
+                if(!dadAge.getText().toString().equals(""))
                     profile.dadAge = Integer.parseInt(dadAge.getText().toString());
                 profile.momLiving = currentMom;
                 profile.dadLiving = currentDad;

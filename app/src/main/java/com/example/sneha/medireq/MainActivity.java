@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
     private BackgroundService mBoundService;
     private boolean mIsBound;
 
-    private static final String filename = "/system/bin/Profiles_MediReQ";
+    private static final String MASTER_FILE = "/system/bin/Profiles_MediReQ";
     private String new_Name;
 
 
@@ -127,7 +127,20 @@ public class MainActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         new_Name = input.getText().toString();
                         if(!mBoundService.names.contains(new_Name)) {
-                            Profile profile = new Profile(new_Name);
+                            Profile profile;
+                            if(mBoundService.profiles.containsKey("/system/bin/MediReQ_" + new_Name)) {
+                                int i = 2;
+                                String try_file = "/system/bin/MediReQ_" + new_Name + i;
+                                while(mBoundService.profiles.containsKey(try_file)){
+                                    i++;
+                                    try_file = "/system/bin/MediReQ_" + new_Name + i;
+                                }
+                                profile = new Profile(new_Name, try_file);
+                            }
+                            else{
+                                profile = new Profile(new_Name);
+                            }
+
                             mBoundService.names.add(new_Name);
                             mBoundService.profiles.put(profile.filename, profile);
                             mAdapter.notifyDataSetChanged();

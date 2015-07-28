@@ -33,9 +33,18 @@ public class Profile{
     public final String filename;
 
 
+    public Profile(String name, String filename){
+        this.name = name;
+        this.filename = filename;
+        init();
+    }
     public Profile(String name){
         this.name = name;
         filename = "/system/bin/MediReQ_" + name;
+        init();
+    }
+
+    private void init(){
         address = "";
         phone = "";
         email = "";
@@ -117,6 +126,5 @@ public class Profile{
     }
 
 
-    //Todo: Might need to override equals
 
 }

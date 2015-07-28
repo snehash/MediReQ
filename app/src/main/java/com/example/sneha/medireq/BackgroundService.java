@@ -34,8 +34,12 @@ public class BackgroundService extends Service {
         profiles = new HashMap<String, Profile>();
         names = new ArrayList<String>();
         System.out.println("Running onCreate for Service");
-
-        //ToDo: read files and populate profile and name here
+        ArrayList<String> profile_filenames = new ArrayList<String>();
+        //TODO: read master file and populate profile_filenames
+        for(String filename: profile_filenames){
+            profiles.put(filename, createFromFile(filename));
+            names.add(profiles.get(filename).name);
+        }
     }
 
     @Override
@@ -47,20 +51,31 @@ public class BackgroundService extends Service {
     @Override
     public void onDestroy(){
         STARTED = false;
-        //Todo: Save name and profile data to file. Don't have to do this if you're saving everytime you make a change
+        for(Profile profile: profiles.values()){
+            writeToFile(profile);
+        }
+
+        //TODO: write filenames to master file
     }
 
     public void remove(String filename, int position){
         names.remove(position);
-        //ToDo:
-        //change names file
-        //delete/clear profile file
+        //TODO:Delete this filename from master file
+        //TODO: delete/clear profile file
         profiles.remove(filename);
     }
 
     public void saveProfile(String filename, Profile profile){
         profiles.put(filename, profile);
-        //TODO: save profile data;
+    }
+
+    public void writeToFile(Profile profile){
+        //TODO: code to write a profile to a file. Filename is profile.filename
+    }
+
+    public Profile createFromFile(String filename){
+        //TODO: code to create profile from file. Use profile(name, filename) constructor not profile(name) constructor
+        return null;
     }
 
 

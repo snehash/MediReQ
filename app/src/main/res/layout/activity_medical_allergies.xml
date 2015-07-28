@@ -18,7 +18,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/MedicalAllergies"
-            android:textSize="22sp"/>
+            android:textSize="26sp"
+            android:textColor="@color/darkred"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/areyouallergic"
+            android:textSize="22sp"
+            android:textColor="@color/mediumred"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
 
 
 
@@ -31,14 +44,15 @@
             <TextView android:text="@string/pencillin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
             <CheckBox
                 android:id = "@+id/checkbox_pencillin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yes" />
+                android:text="@string/yes"
+                android:buttonTint="@color/mediumpink"/>
 
         </LinearLayout>
 
@@ -51,14 +65,16 @@
             <TextView android:text="@string/latex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
             <CheckBox
                 android:id = "@+id/checkbox_latex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yes" />
+                android:buttonTint="@color/mediumpink"
+                android:text="@string/yes"
+                android:checked="false" />
 
         </LinearLayout>
 
@@ -69,6 +85,7 @@
             android:orientation="horizontal">
 
             <TextView android:text="@string/Other"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"/>
@@ -85,7 +102,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/bttn_save_medical_allergies"
             android:text="@string/SaveChanges"
-            android:background="@color/darkpurple"
+            android:background="@color/pink"
+            android:textColor="@color/darkred"
+            android:textSize="17dp"
             android:layout_marginTop="15dp"/>
 
     </LinearLayout>

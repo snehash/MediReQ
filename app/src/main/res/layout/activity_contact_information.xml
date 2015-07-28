@@ -15,16 +15,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:text="@string/personal"
+        android:textSize="26sp"
+        android:textColor="@color/darkred"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/contact"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:textColor="@color/mediumred"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="8dp">
+        >
 
         <TextView android:text="@string/name"
+            android:textColor = "@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:textSize="20sp"/>
@@ -43,6 +57,7 @@
 
         <TextView android:text="@string/address"
             android:layout_width="wrap_content"
+            android:textColor = "@color/black"
             android:layout_height="wrap_content"
             android:textSize="20sp"/>
         <EditText
@@ -61,6 +76,7 @@
         <TextView android:text="@string/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor = "@color/black"
             android:textSize="20sp"/>
         <EditText
             android:layout_width="wrap_content"
@@ -78,7 +94,9 @@
         <TextView android:text="@string/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor = "@color/black"
+            />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,10 +108,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="@string/emergeny"
         android:textSize="22sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textColor="@color/mediumred"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -103,7 +124,9 @@
         <TextView android:text="@string/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor = "@color/black"
+            />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +143,9 @@
         <TextView android:text="@string/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor = "@color/black"
+            />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,10 +157,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="@string/Other"
+        android:textColor="@color/mediumred"
+        android:textStyle="bold"
         android:textSize="22sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -145,7 +172,7 @@
         <TextView android:text="@string/gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor = "@color/black"
             android:textSize="20sp"/>
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -156,16 +183,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
+                android:textColor = "@color/black"
+                android:buttonTint="@color/mediumpink"
                 android:onClick="onGenderButtonClicked"/>
             <RadioButton android:id="@+id/female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
+                android:textColor = "@color/black"
                 android:text="@string/female"
                 android:onClick="onGenderButtonClicked"/>
             <RadioButton android:id="@+id/other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/other"
+                android:textColor = "@color/black"
+                android:buttonTint="@color/mediumpink"
                 android:onClick="onGenderButtonClicked"/>
         </RadioGroup>
 
@@ -179,6 +212,7 @@
         android:orientation="horizontal">
 
         <TextView android:text="@string/Birthday"
+            android:textColor = "@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"/>
@@ -196,6 +230,7 @@
         android:orientation="horizontal">
 
         <TextView android:text="@string/Age"
+            android:textColor = "@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"/>
@@ -214,6 +249,7 @@
         android:orientation="horizontal">
 
         <TextView android:text="@string/Weight"
+            android:textColor = "@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -234,6 +270,7 @@
         android:orientation="horizontal">
 
         <TextView android:text="@string/Height"
+            android:textColor = "@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -253,6 +290,7 @@
         android:orientation="horizontal">
 
         <TextView android:text="@string/PhysicanName"
+            android:textColor = "@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -274,7 +312,7 @@
         <TextView android:text="@string/PhysicanNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor = "@color/black"
             android:textSize="20sp"/>
         <EditText
             android:layout_width="wrap_content"
@@ -293,7 +331,7 @@
         <TextView android:text="@string/LastVisit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor = "@color/black"
             android:textSize="20sp"/>
         <EditText
             android:layout_width="wrap_content"
@@ -312,7 +350,7 @@
         <TextView android:text="@string/currentMedications"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor = "@color/black"
             android:textSize="20sp"/>
         <EditText
             android:layout_width="wrap_content"
@@ -331,7 +369,7 @@
         <TextView android:text="@string/vitamins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor = "@color/black"
             android:textSize="20sp"/>
         <EditText
             android:layout_width="wrap_content"
@@ -348,7 +386,9 @@
     android:layout_height="wrap_content"
     android:id="@+id/bttn_save_contact"
     android:text="@string/SaveChanges"
-    android:background="@color/darkpurple"
+        android:background="@color/pink"
+        android:textColor="@color/darkred"
+        android:textSize="17dp"
         android:layout_marginTop="15dp"/>
 
 

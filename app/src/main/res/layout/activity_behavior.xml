@@ -18,12 +18,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/Behavior"
-            android:textSize="22sp"/>
+            android:textSize="26sp"
+            android:textColor="@color/darkred"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Doyou"
+            android:textColor="@color/mediumred"
+            android:textStyle="bold"
             android:textSize="22sp"/>
 
 
@@ -37,12 +42,14 @@
             <TextView android:text="@string/tobacco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
             <CheckBox
                 android:id = "@+id/checkbox_tobacco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
                 android:text="@string/yes" />
 
 
@@ -56,14 +63,15 @@
 
             <TextView android:text="@string/alcohol"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
-
                 android:textSize="20sp"/>
 
             <CheckBox
                 android:id = "@+id/checkbox_alcohol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
                 android:text="@string/yes" />
 
         </LinearLayout>
@@ -78,13 +86,14 @@
             <TextView android:text="@string/coffee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
             <CheckBox
                 android:id = "@+id/checkbox_coffee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
                 android:text="@string/yes" />
 
         </LinearLayout>
@@ -98,14 +107,15 @@
             <TextView android:text="@string/exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:textColor = "@color/black"
                 android:textSize="20sp"/>
 
             <CheckBox
                 android:id = "@+id/checkbox_exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yes" />
+                android:text="@string/yes"
+                android:buttonTint="@color/mediumpink"/>
 
         </LinearLayout>
 
@@ -114,7 +124,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/bttn_save_behavior"
             android:text="@string/SaveChanges"
-            android:background="@color/darkpurple"
+            android:background="@color/pink"
+            android:textColor="@color/darkred"
             android:layout_marginTop="15dp"/>
 
     </LinearLayout>
