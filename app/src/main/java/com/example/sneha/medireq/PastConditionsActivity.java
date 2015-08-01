@@ -1,19 +1,25 @@
 package com.example.sneha.medireq;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 
@@ -214,6 +220,117 @@ public class PastConditionsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void setChecked(View view){
+
+        switch(view.getId()){
+            case R.id.hospitalized:
+                hospitalized.setChecked(!hospitalized.isChecked());
+                break;
+            case R.id.hep:
+                hep.setChecked(!hep.isChecked());
+                break;
+            case R.id.hepA:
+                hepA.setChecked(!hepA.isChecked());
+                break;
+            case R.id.hepB:
+                hepB.setChecked(!hepB.isChecked());
+                break;
+            case R.id.std:
+                std.setChecked(!std.isChecked());
+                break;
+            case R.id.heartdisease:
+                heartdisease.setChecked(!heartdisease.isChecked());
+                break;
+            case R.id.highchol:
+                highcol.setChecked(!highcol.isChecked());
+                break;
+            case R.id.highbp:
+                highbp.setChecked(!highbp.isChecked());
+                break;
+            case R.id.lowbp:
+                lowbp.setChecked(!lowbp.isChecked());
+                break;
+            case R.id.heartburn:
+                heartburn.setChecked(!heartburn.isChecked());
+                break;
+            case R.id.anemia:
+                anemia.setChecked(!anemia.isChecked());
+                break;
+            case R.id.swollenankles:
+                ankles.setChecked(!ankles.isChecked());
+                break;
+            case R.id.shortbreath:
+                breath.setChecked(!breath.isChecked());
+                break;
+            case R.id.asthma:
+                asthma.setChecked(!asthma.isChecked());
+                break;
+            case R.id.cough:
+                cough.setChecked(!cough.isChecked());
+                break;
+            case R.id.sinus:
+                sinus.setChecked(!sinus.isChecked());
+                break;
+            case R.id.seasonalallergies:
+                seasonal.setChecked(!seasonal.isChecked());
+                break;
+            case R.id.otherallergies:
+                allergies.setChecked(!allergies.isChecked());
+                break;
+            case R.id.tonsils:
+                tonsil.setChecked(!tonsil.isChecked());
+                break;
+            case R.id.earproblems:
+                ear.setChecked(!ear.isChecked());
+                break;
+            case R.id.eyedisorder:
+                eye.setChecked(!eye.isChecked());
+                break;
+            case R.id.seizures:
+                seizure.setChecked(!seizure.isChecked());
+                break;
+            case R.id.stroke:
+                stroke.setChecked(!stroke.isChecked());
+                break;
+            case R.id.headache:
+                headache.setChecked(!headache.isChecked());
+                break;
+            case R.id.neuro:
+                neuro.setChecked(!neuro.isChecked());
+                break;
+            case R.id.depression:
+                depression.setChecked(!depression.isChecked());
+                break;
+            case R.id.psych:
+                psych.setChecked(!psych.isChecked());
+                break;
+            case R.id.diabetes:
+                diabetes.setChecked(!diabetes.isChecked());
+                break;
+            case R.id.kidney:
+                kidney.setChecked(!kidney.isChecked());
+                break;
+            case R.id.liver:
+                liver.setChecked(!liver.isChecked());
+                break;
+            case R.id.arthitis:
+                arthritis.setChecked(!arthritis.isChecked());
+                break;
+            case R.id.cancer:
+                cancer.setChecked(!cancer.isChecked());
+                break;
+            case R.id.thyroid:
+                thyroid.setChecked(!thyroid.isChecked());
+                break;
+            case R.id.ulcer:
+                ulcer.setChecked(!ulcer.isChecked());
+                break;
+
+        }
+
+
+    }
+
     private ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder service) {
             mBoundService = ((BackgroundService.LocalBinder)service).getService();
@@ -234,6 +351,62 @@ public class PastConditionsActivity extends Activity {
             unbindService(mConnection);
             mIsBound = false;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((MyApplication)this.getApplication()).mLastPause = System.currentTimeMillis();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyApplication app = ((MyApplication)this.getApplication());
+        if (System.currentTimeMillis() - app.mLastPause > 5000) {
+            final ScrollView sv = (ScrollView) findViewById(R.id.pastcond_sv);
+            sv.setVisibility(View.INVISIBLE);
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+            final String pwd = pref.getString("password", "");
+            if (pwd.length() > 0) {
+                LayoutInflater inflater=PastConditionsActivity.this.getLayoutInflater();
+                final View layout=inflater.inflate(R.layout.password, null);
+                final AlertDialog d = new AlertDialog.Builder(context)
+                        .setView(layout)
+                        .setTitle("Enter Password")
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setCancelable(false)
+                                //.setNegativeButton(android.R.string.cancel, null)
+                        .create();
+
+                d.setOnShowListener(new DialogInterface.OnShowListener() {
+
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+
+                        Button b = d.getButton(AlertDialog.BUTTON_POSITIVE);
+                        b.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+                                EditText new_password=(EditText)layout.findViewById(R.id.et_checkpassword);
+                                String password1 = new_password.getText().toString();
+                                if (password1.equals(pwd)) {
+                                    sv.setVisibility(View.VISIBLE);
+                                    d.dismiss();
+                                }
+                                else {
+                                    Toast.makeText(context, "Incorrect password", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+                    }
+                });
+                d.show();
+            }
+        }
+
     }
 
     @Override

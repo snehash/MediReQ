@@ -103,7 +103,7 @@
     <string name="Living">Living:</string>
     <string name="seriousillness">Serious Illnesses:</string>
     <string name="Father">Father</string>
-    <string name="Sibilings">Sibilings</string>
+    <string name="Sibilings">Siblings</string>
     <string name="famhistoryques">Does your family have a history of the following:</string>
     <string name="HIV">HIV disease/AIDS?</string>
     <string name="vitamins">Vitamins/Supplements:</string>
@@ -115,4 +115,11 @@
     <string name="Personal">Personal Information</string>
     <string name="MedicalRecordsMenu">Medical Records Menu</string>
     <string name="add_profile">Add Profile</string>
+    <string name="password">Password</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signin">Enter</string>
+    <string name="settings_password">New Password</string>
+    <string name="settings_password2">Confirm Password</string>
 </resources>

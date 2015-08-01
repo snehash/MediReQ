@@ -40,7 +40,7 @@ public class Profile{
     }
     public Profile(String name){
         this.name = name;
-        filename = "/system/bin/MediReQ_" + name;
+        filename = "MediReQ_" + name.replaceAll("\\s","");
         init();
     }
 

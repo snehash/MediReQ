@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/behavior_sv"
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -37,7 +38,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/tobacco"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_tobacco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
+                />
 
             <TextView android:text="@string/tobacco"
                 android:layout_width="wrap_content"
@@ -45,12 +55,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_tobacco"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/mediumpink"
-                android:text="@string/yes" />
+
 
 
         </LinearLayout>
@@ -59,7 +64,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/alcohol"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_alcohol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
+                />
 
             <TextView android:text="@string/alcohol"
                 android:layout_width="wrap_content"
@@ -67,12 +81,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_alcohol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/mediumpink"
-                android:text="@string/yes" />
+
 
         </LinearLayout>
 
@@ -81,7 +90,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/coffee"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_coffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"
+                />
 
             <TextView android:text="@string/coffee"
                 android:layout_width="wrap_content"
@@ -89,12 +107,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_coffee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/mediumpink"
-                android:text="@string/yes" />
+
 
         </LinearLayout>
 
@@ -102,7 +115,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/exercise"
+            android:onClick="setChecked">
+
+            <CheckBox
+            android:id = "@+id/checkbox_exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/exercise"
                 android:layout_width="wrap_content"
@@ -110,12 +131,7 @@
                 android:textColor = "@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_exercise"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 

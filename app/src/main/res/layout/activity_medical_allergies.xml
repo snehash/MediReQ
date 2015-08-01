@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/allergies_sv"
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -39,20 +40,25 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
-
-            <TextView android:text="@string/pencillin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+            android:paddingTop="5dp"
+            android:id = "@+id/penicillin"
+            android:onClick="setChecked">
 
             <CheckBox
                 android:id = "@+id/checkbox_pencillin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+                android:buttonTint="@color/mediumpink"
+                />
+
+            <TextView android:text="@string/pencillin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+
+
 
         </LinearLayout>
 
@@ -60,21 +66,25 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/latex"
+            android:onClick = "setChecked">
+
+            <CheckBox
+            android:id = "@+id/checkbox_latex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/mediumpink"
+            android:checked="false" />
 
             <TextView android:text="@string/latex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                />
 
-            <CheckBox
-                android:id = "@+id/checkbox_latex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/mediumpink"
-                android:text="@string/yes"
-                android:checked="false" />
+
 
         </LinearLayout>
 

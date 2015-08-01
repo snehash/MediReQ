@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/fam_sv"
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -191,8 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/edit_dad_illness"
-                android:inputType="number"
-                android:maxLength="3"/>
+                />
 
         </LinearLayout>
 
@@ -234,13 +234,22 @@
             android:textStyle="bold"
             android:textSize="22sp"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_anemia"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_anemia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/anemia"
                 android:layout_width="wrap_content"
@@ -248,12 +257,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_anemia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -262,7 +266,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_cancer"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_cancer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/cancer"
                 android:layout_width="wrap_content"
@@ -270,12 +282,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_cancer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -283,7 +290,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_diabetes"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_diabetes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/diabetes"
                 android:layout_width="wrap_content"
@@ -291,12 +306,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_diabetes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -304,7 +314,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_eyedisorder"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_eyedisorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/eyedisorder"
                 android:layout_width="wrap_content"
@@ -312,12 +330,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_eyedisorder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -325,7 +338,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_heartdisease"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_heartdisease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/heartdisease"
                 android:layout_width="wrap_content"
@@ -333,12 +354,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_heartdisease"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -346,7 +362,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_highbp"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_highbp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/highbp"
                 android:layout_width="wrap_content"
@@ -354,12 +378,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_highbp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
 
         </LinearLayout>
 
@@ -367,7 +385,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_hiv"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_hiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/HIV"
                 android:layout_width="wrap_content"
@@ -375,12 +401,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_hiv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -388,7 +409,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_depression"
+            android:onClick="setChecked">
+            <CheckBox
+                android:id = "@+id/checkbox_fam_depression"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/depression"
                 android:layout_width="wrap_content"
@@ -396,12 +424,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_depression"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 
@@ -409,7 +432,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id = "@+id/fam_stroke"
+            android:onClick="setChecked">
+
+            <CheckBox
+                android:id = "@+id/checkbox_fam_stroke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mediumpink"/>
 
             <TextView android:text="@string/stroke"
                 android:layout_width="wrap_content"
@@ -417,12 +448,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id = "@+id/checkbox_fam_stroke"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:buttonTint="@color/mediumpink"/>
+
 
         </LinearLayout>
 

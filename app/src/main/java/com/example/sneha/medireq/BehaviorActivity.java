@@ -1,19 +1,26 @@
 package com.example.sneha.medireq;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 
@@ -112,6 +119,82 @@ public class BehaviorActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void setChecked(View view) {
+
+        switch (view.getId()) {
+            case R.id.tobacco:
+                tobacco.setChecked(!tobacco.isChecked());
+                break;
+            case R.id.alcohol:
+                alcohol.setChecked(!alcohol.isChecked());
+                break;
+            case R.id.coffee:
+                coffee.setChecked(!coffee.isChecked());
+                break;
+            case R.id.exercise:
+                exercise.setChecked(!exercise.isChecked());
+                break;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((MyApplication)this.getApplication()).mLastPause = System.currentTimeMillis();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyApplication app = ((MyApplication)this.getApplication());
+        if (System.currentTimeMillis() - app.mLastPause > 5000) {
+            final ScrollView sv = (ScrollView) findViewById(R.id.behavior_sv);
+            sv.setVisibility(View.INVISIBLE);
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+            final String pwd = pref.getString("password", "");
+            if (pwd.length() > 0) {
+                LayoutInflater inflater=BehaviorActivity.this.getLayoutInflater();
+                final View layout=inflater.inflate(R.layout.password, null);
+                final AlertDialog d = new AlertDialog.Builder(context)
+                        .setView(layout)
+                        .setTitle("Enter Password")
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setCancelable(false)
+                                //.setNegativeButton(android.R.string.cancel, null)
+                        .create();
+
+                d.setOnShowListener(new DialogInterface.OnShowListener() {
+
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+
+                        Button b = d.getButton(AlertDialog.BUTTON_POSITIVE);
+                        b.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+                                EditText new_password=(EditText)layout.findViewById(R.id.et_checkpassword);
+                                String password1 = new_password.getText().toString();
+                                if (password1.equals(pwd)) {
+                                    sv.setVisibility(View.VISIBLE);
+                                    d.dismiss();
+                                }
+                                else {
+                                    Toast.makeText(context, "Incorrect password", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+                    }
+                });
+                d.show();
+            }
+        }
+
+    }
+
+
 
     @Override
     protected void onDestroy() {

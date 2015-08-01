@@ -1,23 +1,37 @@
 package com.example.sneha.medireq;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
+import android.nfc.NfcEvent;
 import android.os.IBinder;
+import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +39,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class NavigationDrawer extends Activity {
+public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefMessageCallback{
     public static String PROFILE = "com.example.MediReQ.profile";
     public static int UPDATEPROFILE = 6;
 
@@ -36,6 +50,9 @@ public class NavigationDrawer extends Activity {
     private Profile profile;
     private BackgroundService mBoundService;
     private boolean mIsBound;
+    private NfcAdapter nfcAdapter;
+    private String filename;
+
 
 
     @Override
@@ -47,12 +64,137 @@ public class NavigationDrawer extends Activity {
             startService(intent);
         }
         doBindService();
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if (nfcAdapter == null) {
+            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+        // Register callback
+        nfcAdapter.setNdefPushMessageCallback(this, this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Check to see that the Activity started due to an Android Beam
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
+            processIntent(getIntent());
+        }
+        MyApplication app = ((MyApplication)this.getApplication());
+        if (System.currentTimeMillis() - app.mLastPause > 5000) {
+            final LinearLayout ll = (LinearLayout) findViewById(R.id.navigationdrawer_ll);
+            ll.setVisibility(View.INVISIBLE);
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+            final String pwd = pref.getString("password", "");
+            if (pwd.length() > 0) {
+                LayoutInflater inflater=NavigationDrawer.this.getLayoutInflater();
+                final View layout=inflater.inflate(R.layout.password, null);
+                final AlertDialog d = new AlertDialog.Builder(context)
+                        .setView(layout)
+                        .setTitle("Enter Password")
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setCancelable(false)
+                                //.setNegativeButton(android.R.string.cancel, null)
+                        .create();
+
+                d.setOnShowListener(new DialogInterface.OnShowListener() {
+
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+
+                        Button b = d.getButton(AlertDialog.BUTTON_POSITIVE);
+                        b.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+                                EditText new_password=(EditText)layout.findViewById(R.id.et_checkpassword);
+                                String password1 = new_password.getText().toString();
+                                if (password1.equals(pwd)) {
+                                    ll.setVisibility(View.VISIBLE);
+                                    d.dismiss();
+                                }
+                                else {
+                                    Toast.makeText(context, "Incorrect password", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+                    }
+                });
+                d.show();
+            }
+
+        }
+    }
+
+    @Override
+    public NdefMessage createNdefMessage(NfcEvent event) {
+        byte[] text = null;
+        try {
+            InputStreamReader in = new InputStreamReader(openFileInput(filename));
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+            int nRead;
+            byte[] data = new byte[16384];
+            char[] data_ch = new char[16384];
+
+            while ((nRead = in.read(data_ch, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+
+            buffer.flush();
+
+           text = buffer.toByteArray();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
+        }
+        NdefMessage msg = new NdefMessage(
+
+                new NdefRecord[] { NdefRecord.createMime(
+                        "text/plain", text)
+                        /**
+                         * The Android Application Record (AAR) is commented out. When a device
+                         * receives a push with an AAR in it, the application specified in the AAR
+                         * is guaranteed to run. The AAR overrides the tag dispatch system.
+                         * You can add it back in to guarantee that this
+                         * activity starts when receiving a beamed message. For now, this code
+                         * uses the tag dispatch system.
+                         */
+                        ,NdefRecord.createApplicationRecord("com.medireq.nfcsample")
+                });
+        return msg;
+    }
+
+
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        // onResume gets called after this to handle the intent
+        setIntent(intent);
+    }
+
+    /**
+     * Parses the NDEF Message from the intent and prints to the TextView
+     */
+    void processIntent(Intent intent) {
+        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
+                NfcAdapter.EXTRA_NDEF_MESSAGES);
+        // only one message sent during the beam
+        NdefMessage msg = (NdefMessage) rawMsgs[0];
+        // record 0 contains the MIME type, record 1 is the AAR, if present
+        Toast.makeText(this, "Profile Sent!", Toast.LENGTH_SHORT).show();
     }
 
     private void init(){
 
         Intent intent = getIntent();
-        final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
+        filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
 
         mListView = (ListView) findViewById(R.id.lv_categories);
@@ -64,7 +206,7 @@ public class NavigationDrawer extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selection = categories[position];
-                switch(selection) {
+                switch (selection) {
                     case "Personal":
                         Intent intent_personal = new Intent(context, ContactInformationActivity.class);
                         intent_personal.putExtra(PROFILE, filename);
@@ -105,11 +247,13 @@ public class NavigationDrawer extends Activity {
 
     }
 
-
     @Override
-    protected void onResume(){
-        super.onResume();
+    public void onPause() {
+        super.onPause();
+        ((MyApplication)this.getApplication()).mLastPause = System.currentTimeMillis();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
