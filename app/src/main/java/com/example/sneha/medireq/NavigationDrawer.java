@@ -30,6 +30,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -52,6 +54,8 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
     private boolean mIsBound;
     private NfcAdapter nfcAdapter;
     private String filename;
+    private boolean isWriter = true;
+
 
 
 
@@ -131,44 +135,46 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        byte[] text = null;
+       String jsonProf = null;
+
+        Gson json = new Gson();
         try {
             InputStreamReader in = new InputStreamReader(openFileInput(filename));
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-
-            int nRead;
-            byte[] data = new byte[16384];
-            char[] data_ch = new char[16384];
-
-            while ((nRead = in.read(data_ch, 0, data.length)) != -1) {
-                buffer.write(data, 0, nRead);
-            }
-
-            buffer.flush();
-
-           text = buffer.toByteArray();
+            String encryptedJson = "";
+            int c = 0;
+            while ((c = in.read()) != -1)
+                encryptedJson += (char) c;
+            jsonProf = Crypto.decrypt(encryptedJson, MainActivity.password);
+            //Profile p = (Profile) json.fromJson(origJson, Profile.class);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
             Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
-        NdefMessage msg = new NdefMessage(
+        System.out.println("Sending message");
 
+
+        NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { NdefRecord.createMime(
-                        "text/plain", text)
-                        /**
-                         * The Android Application Record (AAR) is commented out. When a device
-                         * receives a push with an AAR in it, the application specified in the AAR
-                         * is guaranteed to run. The AAR overrides the tag dispatch system.
-                         * You can add it back in to guarantee that this
-                         * activity starts when receiving a beamed message. For now, this code
-                         * uses the tag dispatch system.
-                         */
-                        ,NdefRecord.createApplicationRecord("com.medireq.nfcsample")
+                        "text/plain", jsonProf.getBytes())
+                        ,NdefRecord.createApplicationRecord("com.example.sneha.medireqreader")
                 });
         return msg;
+    }
+
+    public void switchMode(View v) {
+        Button b = (Button)v;
+        if (isWriter) {
+            b.setText("Reader");
+            isWriter = false;
+            nfcAdapter.setNdefPushMessageCallback(null, this);
+        } else {
+            b.setText("Writer");
+            isWriter = true;
+            nfcAdapter.setNdefPushMessageCallback(this, this);
+        }
     }
 
 
@@ -188,7 +194,7 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        Toast.makeText(this, "Profile Sent!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Hi recieved", Toast.LENGTH_SHORT).show();
     }
 
     private void init(){

@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -272,6 +273,7 @@ public class ContactInformationActivity extends Activity {
         }
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -291,6 +293,12 @@ public class ContactInformationActivity extends Activity {
                         .setCancelable(false)
                                 //.setNegativeButton(android.R.string.cancel, null)
                         .create();
+                WindowManager manager = (WindowManager) getSystemService(Activity.WINDOW_SERVICE);
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                lp.copyFrom(d.getWindow().getAttributes());
+                lp.width = manager.getDefaultDisplay().getWidth();
+                lp.height = manager.getDefaultDisplay().getHeight();
+                d.getWindow().setAttributes(lp);
 
                 d.setOnShowListener(new DialogInterface.OnShowListener() {
 

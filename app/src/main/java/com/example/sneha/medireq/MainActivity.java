@@ -135,11 +135,11 @@ public class MainActivity extends Activity {
         super.onResume();
         MyApplication app = ((MyApplication)this.getApplication());
         if (System.currentTimeMillis() - app.mLastPause > 5000) {
-            final LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
-            ll.setVisibility(View.INVISIBLE);
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
             final String pwd = pref.getString("password", "");
             if (pwd.length() > 0) {
+                final LinearLayout ll = (LinearLayout) findViewById(R.id.main_ll);
+                ll.setVisibility(View.INVISIBLE);
                 LayoutInflater inflater=MainActivity.this.getLayoutInflater();
                 final View layout=inflater.inflate(R.layout.password, null);
                 final AlertDialog d = new AlertDialog.Builder(context)
@@ -163,6 +163,7 @@ public class MainActivity extends Activity {
                                 EditText new_password=(EditText)layout.findViewById(R.id.et_checkpassword);
                                 String password1 = new_password.getText().toString();
                                 if (password1.equals(pwd)) {
+
                                     ll.setVisibility(View.VISIBLE);
                                     d.dismiss();
                                 }
@@ -306,7 +307,12 @@ public class MainActivity extends Activity {
 
                     mBoundService.names.add(new_Name);
                     mBoundService.profiles.put(profile.filename, profile);
-                    mAdapter.notifyDataSetChanged();
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    });
+
                 }
             }
         });
