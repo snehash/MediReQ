@@ -75,6 +75,7 @@ public class ContactInformationActivity extends Activity {
         filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         System.out.println("Filename is " + filename);
         profile = mBoundService.profiles.get(filename);
+        getActionBar().setTitle(profile.name);
         System.out.println(mBoundService.profiles);
         System.out.println(profile);
 
@@ -130,7 +131,7 @@ public class ContactInformationActivity extends Activity {
             case "male":
                 female.setChecked(false);
                 male.setChecked(true);
-                other.setChecked(true);
+                other.setChecked(false);
                 currentGender = "male";
                 break;
             case "other":
@@ -157,7 +158,7 @@ public class ContactInformationActivity extends Activity {
                 profile.emergencyNumber = mEmerNum.getText().toString();
                 profile.emergencyContact = mEmer.getText().toString();
                 profile.birthday = mBirthday.getText().toString();
-                if(!mAge.getText().toString().equals(""))
+                if(!mWeight.getText().toString().equals(""))
                     profile.weight = Integer.parseInt(mWeight.getText().toString());
                 profile.height = mHeight.getText().toString();
                 profile.docname = physicanName.getText().toString();

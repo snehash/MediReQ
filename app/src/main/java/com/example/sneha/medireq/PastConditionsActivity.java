@@ -52,6 +52,7 @@ public class PastConditionsActivity extends Activity {
         Intent intent = getIntent();
         filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
+        getActionBar().setTitle(profile.name);
         hospitalized = (CheckBox) findViewById(R.id.checkbox_hospitalized);
         hep = (CheckBox) findViewById(R.id.checkbox_hep);
         hepA = (CheckBox) findViewById(R.id.checkbox_hepA);
@@ -128,8 +129,7 @@ public class PastConditionsActivity extends Activity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hospitalized.setChecked(profile.hospitalized);
-
+                profile.hospitalized = hospitalized.isChecked();
                 profile.heptest = hep.isChecked();
                 profile.hepA = hepA.isChecked();
                 profile.hepB = hepB.isChecked();

@@ -50,6 +50,7 @@ public class MedicalAllergies extends Activity {
         Intent intent = getIntent();
         final String filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
+        getActionBar().setTitle(profile.name);
         pencillin = (CheckBox) findViewById(R.id.checkbox_pencillin);
         latex = (CheckBox) findViewById(R.id.checkbox_latex);
         other = (EditText) findViewById(R.id.edit_mediallergies_details);

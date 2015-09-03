@@ -50,6 +50,7 @@ public class BehaviorActivity extends Activity {
         Intent intent = getIntent();
         filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
+        getActionBar().setTitle(profile.name);
         System.out.println(filename);
         alcohol = (CheckBox) findViewById(R.id.checkbox_alcohol);
         tobacco = (CheckBox) findViewById(R.id.checkbox_tobacco);

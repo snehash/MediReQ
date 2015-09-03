@@ -55,6 +55,7 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
     private NfcAdapter nfcAdapter;
     private String filename;
     private boolean isWriter = true;
+    private boolean unlocked = false;
 
 
 
@@ -88,6 +89,7 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
         }
         MyApplication app = ((MyApplication)this.getApplication());
         if (System.currentTimeMillis() - app.mLastPause > 5000) {
+            unlocked = false;
             final LinearLayout ll = (LinearLayout) findViewById(R.id.navigationdrawer_ll);
             ll.setVisibility(View.INVISIBLE);
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -117,6 +119,7 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
                                 String password1 = new_password.getText().toString();
                                 if (password1.equals(pwd)) {
                                     ll.setVisibility(View.VISIBLE);
+                                    unlocked = true;
                                     d.dismiss();
                                 }
                                 else {
@@ -131,29 +134,39 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
             }
 
         }
+
+        else{
+            unlocked = true;
+        }
     }
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-       String jsonProf = null;
+        mBoundService.saveProfile(filename, profile);
+        String jsonProf = null;
 
-        Gson json = new Gson();
-        try {
-            InputStreamReader in = new InputStreamReader(openFileInput(filename));
-            String encryptedJson = "";
-            int c = 0;
-            while ((c = in.read()) != -1)
-                encryptedJson += (char) c;
-            jsonProf = Crypto.decrypt(encryptedJson, MainActivity.password);
-            //Profile p = (Profile) json.fromJson(origJson, Profile.class);
-        } catch (FileNotFoundException e) {
-            Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        } catch (IOException e) {
-            Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+        if(unlocked == false){
+            jsonProf = "";
         }
-        System.out.println("Sending message");
+        else {
+            Gson json = new Gson();
+            try {
+                InputStreamReader in = new InputStreamReader(openFileInput(filename));
+                String encryptedJson = "";
+                int c = 0;
+                while ((c = in.read()) != -1)
+                    encryptedJson += (char) c;
+                jsonProf = Crypto.decrypt(encryptedJson, MainActivity.password);
+                //Profile p = (Profile) json.fromJson(origJson, Profile.class);
+            } catch (FileNotFoundException e) {
+                Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            } catch (IOException e) {
+                Toast.makeText(this, "Data Transfer Failed.", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+        System.out.println(jsonProf);
 
 
         NdefMessage msg = new NdefMessage(
@@ -198,11 +211,10 @@ public class NavigationDrawer extends Activity implements NfcAdapter.CreateNdefM
     }
 
     private void init(){
-
         Intent intent = getIntent();
         filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
-
+        getActionBar().setTitle(profile.name);
         mListView = (ListView) findViewById(R.id.lv_categories);
         context = this;
         categories = getResources().getStringArray(R.array.categories);

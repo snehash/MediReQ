@@ -42,6 +42,8 @@ public class SurgicalHistory extends Activity {
 
         filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         profile = mBoundService.profiles.get(filename);
+        getActionBar().setTitle(profile.name);
+
         history = (EditText) findViewById(R.id.edit_surgicalhistory);
         history.setText(profile.surgicalHistory);
         mButton = (Button) findViewById(R.id.bttn_save_surgical);
@@ -125,6 +127,12 @@ public class SurgicalHistory extends Activity {
             unbindService(mConnection);
             mIsBound = false;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((MyApplication)this.getApplication()).mLastPause = System.currentTimeMillis();
     }
 
     @Override

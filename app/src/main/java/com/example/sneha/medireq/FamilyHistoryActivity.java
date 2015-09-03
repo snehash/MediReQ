@@ -69,7 +69,7 @@ public class FamilyHistoryActivity extends Activity {
         filename = intent.getStringExtra(NavigationDrawer.PROFILE);
         System.out.println("Filename is " + filename);
         profile = mBoundService.profiles.get(filename);
-
+        getActionBar().setTitle(profile.name);
         momLiving = (RadioButton) findViewById(R.id.living_mom_yes);
         momDead = (RadioButton) findViewById(R.id.living_mom_no);
         momUnknown = (RadioButton) findViewById(R.id.living_mom_unknown);
@@ -379,13 +379,13 @@ public class FamilyHistoryActivity extends Activity {
     public void onDadClicked(View view){
 
         switch(view.getId()){
-            case R.id.living_mom_yes:
+            case R.id.living_dad_yes:
                 currentDad = "living";
                 break;
-            case R.id.living_mom_no:
+            case R.id.living_dad_no:
                 currentDad = "dead";
                 break;
-            case R.id.living_mom_unknown:
+            case R.id.living_dad_unknown:
                 currentDad = "unknown";
                 break;
         }
